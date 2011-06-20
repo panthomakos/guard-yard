@@ -37,3 +37,9 @@ Available options:
     :server => '--no-stats' # Command line options to pass to the yard server command.
 
 Guard::Yard will always use the cached version of files (-c command line option). This enables individual documentation files to be updated so that the entire YARD documentation does not need to be generated on every file change.
+
+## Generating Initial Documentation
+
+When running spork if you use `Ctrl-\` Guard::Yard will generate and cache all of your documentation. This is a great way to get all of your initial documentation onto your YARD server. After this point Guard::Yard will only update the documentation for files that you change. If you prefer to not execute a run-all on all of your guards, you can issue the following command instead:
+
+    yard doc -c

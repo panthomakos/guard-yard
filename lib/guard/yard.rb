@@ -28,7 +28,8 @@ module Guard
     end
 
     def run_all
-      true
+      UI.info "Creating all YARD Documentation"
+      system "yard doc #{options[:doc]} -c"
     end
 
     def run_on_change(paths)
