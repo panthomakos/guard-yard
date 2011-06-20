@@ -10,7 +10,7 @@ module Guard
       super
       @server = Server.new(options[:server], options[:port])
       @options = options
-      @options[:doc] ||= '-q'
+      @options[:doc] ||= ''
     end
 
     def start

@@ -32,8 +32,8 @@ Guard::Yard also provides some basic options for doc generation and running the 
 
 Available options:
 
-    :port => '8808' # Port on which the server shoud run.
-    :doc => '-q'    # Command line options to pass to the yard doc command.
-    :server => '-c' # Command line options to pass to the yard server command.
+    :port => '8808'         # Port on which the server shoud run.
+    :doc => '--private'     # Command line options to pass to the yard doc command.
+    :server => '--no-stats' # Command line options to pass to the yard server command.
 
 Guard::Yard will always use the cached version of files (-c command line option). This enables individual documentation files to be updated so that the entire YARD documentation does not need to be generated on every file change.
