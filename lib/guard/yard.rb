@@ -29,7 +29,7 @@ module Guard
 
     def run_all
       UI.info "Creating all YARD Documentation"
-      system "yard doc #{options[:doc]} -c"
+      system "yard doc #{options[:doc]} --no-cache"
     end
 
     def run_on_change(paths)
