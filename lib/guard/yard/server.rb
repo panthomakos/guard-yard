@@ -19,7 +19,7 @@ module Guard
           Signal.trap('INT', 'IGNORE')
           Signal.trap('TSTP', 'IGNORE')
 
-          exec("yard server #{options} -p #{port}")
+          exec("yard server #{options} -p #{port} -c")
         end
         pid
       end
