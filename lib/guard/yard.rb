@@ -33,7 +33,7 @@ module Guard
     end
 
     def run_on_change(paths)
-      paths.each{ |path| system "yard doc '#{path}' #{options[:doc]} -c" }
+      paths.each{ |path| system "yard doc '#{path}' #{options[:doc]} -n" }
     end
   end
 end
