@@ -1,10 +1,10 @@
-= Guard::Yard
+# Guard::Yard
 
 Guard::Yard allows you to automatically run and update your local YARD Documentation Server. It aims to centralize your file monitoring to guard instead of using the `yard server --reload` command which can be unreliable and provides little control over the generated documentation.
 
-== Install
+## Install
 
-Ensure you have {Guard}[https://github.com/guard/guard] installed before you continue.
+Ensure you have [Guard](https://github.com/guard/guard) installed before you continue.
 
 Add guard-yard to your Gemfile (inside development group):
 
@@ -18,9 +18,9 @@ Add the default guard-yard definition to your Guardfile:
 
     guard init yard
 
-== Guardfile
+## Guardfile
 
-Please read the {Guardfile DSL documentation}[https://github.com/guard/guard#readme] for additional information.
+Please read the [Guardfile DSL documentation](https://github.com/guard/guard#readme) for additional information.
 
 Guard::Yard automatically detects changes in your app and lib directories, but you can have it monitor additional files using the Guardfile DSL.
 
