@@ -3,10 +3,9 @@ require 'socket'
 module Guard
   class Yard
     class Server
-      attr_accessor :options, :pid, :port
+      attr_accessor :pid, :port
 
-      def initialize(options, port)
-        @options = options || ''
+      def initialize(port)
         @port = port || '8808'
       end
 
@@ -19,7 +18,7 @@ module Guard
           Signal.trap('INT', 'IGNORE')
           Signal.trap('TSTP', 'IGNORE')
 
-          exec("yard server #{options} -p #{port} -c")
+          exec("yard server -p #{port}")
         end
         pid
       end
@@ -37,11 +36,11 @@ module Guard
           rescue Errno::ECONNREFUSED
             next
           end
-          UI.info "YARD Documentation Server successfully started"
+          UI.info "[Guard::Yard] Server successfully started."
           return true
         end
-        UI.error "Could not start YARD Documentation Server"
-        Notifier.notify "YARD Documentation Server NOT started",
+        UI.error "[Guard::Yard] Error starting documentation server."
+        Notifier.notify "[Guard::Yard] Server NOT started.",
           :title => 'yard', :image => failed
         false
       end

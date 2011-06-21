@@ -26,20 +26,23 @@ Guard::Yard automatically detects changes in your app, lib and ext directories, 
 
 Guard::Yard also provides some basic options for doc generation and running the YARD server.
 
-    guard 'yard', :port => '8808', :doc => '', :server => '' do
+    guard 'yard', :port => '8808' do
       ...
     end
 
 Available options:
 
     :port => '8808'         # Port on which the server shoud run.
-    :doc => '--private'     # Command line options to pass to the yard doc command.
-    :server => '--no-stats' # Command line options to pass to the yard server command.
 
-Guard::Yard will always use the cached version of files (-c command line option). This enables individual documentation files to be updated so that the entire YARD documentation database does not need to be generated on every file change.
+## Clean-Slate Documentation
 
-## Generating Initial Documentation
+To generate or re-create documentation from a clean-slate, run the following command:
 
-When running guard, if you use `Ctrl-\`, Guard::Yard will generate and cache all of your documentation. This is a great way to get all of your initial docs into your YARD database. After this point Guard::Yard will only update the documentation for files that you change. If you prefer to not execute a run-all on all of your guards, you can issue the following command instead:
+    rm -rf .yardoc && yard doc
 
-    yard doc --no-cache
+When booting guard, Guard::Yard will do this for you automatically if no .yardoc directory is present. Once guard is running you can execute this command by using the `Ctrl-\` key combination as well.
+
+
+## Troubleshooting
+
+If you are running into issues, try re-creating your documentation using `rm -rf .yardoc && yard doc`. Once this operation is complete, restart guard. If you are still having problems, open a new issue in the GitHub issue tracker for this project.
