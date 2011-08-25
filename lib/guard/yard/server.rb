@@ -41,7 +41,7 @@ module Guard
         end
         UI.error "[Guard::Yard] Error starting documentation server."
         Notifier.notify "[Guard::Yard] Server NOT started.",
-          :title => 'yard', :image => failed
+          :title => 'yard', :image => :failed
         false
       end
     end
