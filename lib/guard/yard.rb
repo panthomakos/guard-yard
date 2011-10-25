@@ -9,7 +9,7 @@ module Guard
 
     def initialize(watchers=[], options={})
       super
-      @server = Server.new(options[:port])
+      @server = Server.new(options[:port], options[:stdout], options[:stderr])
     end
 
     def start

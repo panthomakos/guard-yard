@@ -5,8 +5,10 @@ module Guard
     class Server
       attr_accessor :pid, :port
 
-      def initialize(port)
+      def initialize(port, stdout, stderr)
         @port = port || '8808'
+        @stdout = stdout
+        @stderr = stderr
       end
 
       def spawn
@@ -18,7 +20,10 @@ module Guard
           Signal.trap('INT', 'IGNORE')
           Signal.trap('TSTP', 'IGNORE')
 
-          exec("yard server -p #{port}")
+          command = ["yard server -p #{port}"]
+          command << "2> #{@stderr}" if @stderr
+          command << "1> #{@stdout}" if @stdout
+          exec command.join(' ')
         end
         pid
       end
