@@ -33,7 +33,7 @@ module Guard
       true
     end
 
-    def run_on_change(paths)
+    def run_on_changes(paths)
       UI.info "[Guard::Yard] Detected changes in #{paths.join(',')}."
       paths.each{ |path| document([path]) }
       UI.info "[Guard::Yard] Updated documentation for #{paths.join(',')}."
