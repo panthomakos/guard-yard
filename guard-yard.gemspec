@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "guard-yard"
   s.required_ruby_version = '>= 1.9.2'
-  s.add_dependency 'guard', '>= 0.2.2'
+  s.add_dependency 'guard', '>= 1.1.0'
   s.add_dependency 'yard', '>= 0.7.0'
 
   s.files         = Dir.glob('{lib}/**/*') + %w[LICENSE README.markdown]
