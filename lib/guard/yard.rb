@@ -55,7 +55,9 @@ module Guard
       ::YARD::Registry.load!
       ::YARD::Registry.load(files, true)
       ::YARD::Registry.load_all
-      options = ::YARD::CLI::Yardoc.new.options
+      yardoc = ::YARD::CLI::Yardoc.new
+      yardoc.parse_arguments
+      options = yardoc.options
       objects = ::YARD::Registry.all(:root, :module, :class).reject do |object|
         (!options[:serializer] || options[:serializer].exists?(object)) \
           && !object.files.any?{|f,line| files.include?(f)}
