@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = Guard::Yard::VERSION
   s.authors     = ["Pan Thomakos"]
   s.email       = ["pan.thomakos@gmail.com"]
-  s.homepage    = ""
+  s.homepage    = "https://github.com/panthomakos/guard-yard"
   s.summary     = %q{Guard gem for YARD}
   s.description = %q{Guard::Yard automatically monitors Yard Documentation.}
 
