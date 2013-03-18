@@ -35,6 +35,7 @@ Available options:
     :port => '8808'         # Port on which the server shoud run.
     :stdout => 'yard.log'   # File in which to log the yard server output.
     :stderr => '/dev/null'  # File in which to log the yard server errors.
+    :cli => '--plugin rest' # Additional command line options to be appended to the server command.
 
 ## Clean-Slate Documentation
 
