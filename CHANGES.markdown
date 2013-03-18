@@ -1,4 +1,4 @@
-# 2.0.2
+# 2.1.0
 
 * Added possibility to specify cli-options for server start. (maxigs)
 
