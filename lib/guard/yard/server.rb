@@ -13,6 +13,8 @@ module Guard
       end
 
       def spawn
+        UI.info "[Guard::Yard] Starting YARD Documentation Server."
+
         self.pid = fork
         raise 'Fork failed' if pid == -1
 
@@ -31,6 +33,7 @@ module Guard
       end
 
       def kill
+        UI.info "[Guard::Yard] Stopping YARD Documentation Server."
         Process.kill('KILL', pid) unless pid.nil?
         true
       end

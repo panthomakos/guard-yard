@@ -4,16 +4,17 @@ require 'yard'
 
 module Guard
   class Yard < Guard
+    autoload :NoServer, 'guard/yard/no_server'
     autoload :Server, 'guard/yard/server'
     attr_accessor :server
 
     def initialize(watchers=[], options={})
       super
-      @server = Server.new(options)
+      options[:server] = true unless options.has_key?(:server)
+      @server = options[:server] ? Server.new(options) : NoServer.new
     end
 
     def start
-      UI.info "[Guard::Yard] Starting YARD Documentation Server."
       boot
     end
 
@@ -22,7 +23,6 @@ module Guard
     end
 
     def reload
-      UI.info "[Guard::Yard] Reloading YARD Documentation Server."
       boot
     end
 
