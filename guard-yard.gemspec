@@ -4,7 +4,7 @@ require "guard/yard/version"
 
 Gem::Specification.new do |s|
   s.name        = "guard-yard"
-  s.version     = Guard::Yard::VERSION
+  s.version     = Guard::YardVersion::VERSION
   s.authors     = ["Pan Thomakos"]
   s.email       = ["pan.thomakos@gmail.com"]
   s.homepage    = "https://github.com/panthomakos/guard-yard"
