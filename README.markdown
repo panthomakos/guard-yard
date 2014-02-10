@@ -2,9 +2,13 @@
 
 Guard::Yard allows you to automatically run and update your local YARD Documentation Server. It aims to centralize your file monitoring to guard instead of using the `yard server --reload` command which can be unreliable and provides little control over the generated documentation. Guard::Yard monitors files and updates only the documentation than changes, as opposed to generating the entire documentation suite. That means that changes to your documentation are available sooner!
 
-## Install
+## Requirements
 
-Ensure you have [Guard](https://github.com/guard/guard) installed before you continue.
+* The [YARD](http://yardoc.org) documentation tool.
+* The [Guard](https://github.com/guard/guard) rubygem.
+* Ruby 1.9.2 or higher.
+
+## Install
 
 Add guard-yard to your Gemfile (inside development group):
 
