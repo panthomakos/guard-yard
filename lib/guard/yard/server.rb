@@ -15,26 +15,22 @@ module Guard
       def spawn
         UI.info "[Guard::Yard] Starting YARD Documentation Server."
 
-        self.pid = fork
-        raise 'Fork failed' if pid == -1
+        command = ["yard server -p #{port}"]
+        command << @cli if @cli
+        command << "2> #{@stderr}" if @stderr
+        command << "1> #{@stdout}" if @stdout
 
-        unless pid
-          Signal.trap('QUIT', 'IGNORE')
-          Signal.trap('INT', 'IGNORE')
-          Signal.trap('TSTP', 'IGNORE')
-
-          command = ["yard server -p #{port}"]
-          command << @cli if @cli
-          command << "2> #{@stderr}" if @stderr
-          command << "1> #{@stdout}" if @stdout
-          exec command.join(' ')
-        end
-        pid
+        self.pid = Process.spawn(command.join(' '))
       end
 
       def kill
         UI.info "[Guard::Yard] Stopping YARD Documentation Server."
-        Process.kill('KILL', pid) unless pid.nil?
+        begin
+          Process.kill('QUIT', pid) if pid
+          Process.wait2
+        rescue Errno::ESRCH, Errno::ECHILD
+          # Process is already dead.
+        end
         true
       end
 
