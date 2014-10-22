@@ -1,3 +1,7 @@
+# 2.1.3 (2014-10-22)
+
+* Fixes #14, #15. `Process.wait2` only waits when a PID exists.
+
 # 2.1.2 (2014-10-14)
 
 * Fixed #13. `Process.wait2` now waits specifically for the server PID. (panthomakos)

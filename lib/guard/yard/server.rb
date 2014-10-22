@@ -26,8 +26,10 @@ module Guard
       def kill
         UI.info "[Guard::Yard] Stopping YARD Documentation Server."
         begin
-          Process.kill('QUIT', pid) if pid
-          Process.wait2(pid)
+          if pid
+            Process.kill('QUIT', pid)
+            Process.wait2(pid)
+          end
         rescue Errno::ESRCH, Errno::ECHILD
           # Process is already dead.
         end
