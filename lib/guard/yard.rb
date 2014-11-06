@@ -1,16 +1,16 @@
 require 'guard'
-require 'guard/guard'
+require 'guard/plugin'
 require 'yard'
 
 module Guard
-  class Yard < Guard
+  class Yard < Plugin
     autoload :NoServer, 'guard/yard/no_server'
     autoload :Server, 'guard/yard/server'
     attr_accessor :server
 
-    def initialize(watchers=[], options={})
+    def initialize(options = {})
       super
-      options[:server] = true unless options.has_key?(:server)
+      options[:server] = true unless options.key?(:server)
       @server = options[:server] ? Server.new(options) : NoServer.new
     end
 
@@ -35,7 +35,7 @@ module Guard
 
     def run_on_changes(paths)
       UI.info "[Guard::Yard] Detected changes in #{paths.join(',')}."
-      paths.each{ |path| document([path]) }
+      paths.each { |path| document([path]) }
       UI.info "[Guard::Yard] Updated documentation for #{paths.join(',')}."
     end
 
