@@ -1,6 +1,10 @@
+# 2.1.4 (2014-11-06)
+
+* Upgraded to use new `Guard::Plugin` standard. (stefanvermaas)
+
 # 2.1.3 (2014-10-22)
 
-* Fixes #14, #15. `Process.wait2` only waits when a PID exists.
+* Fixes #14, #15. `Process.wait2` only waits when a PID exists. (panthomakos)
 
 # 2.1.2 (2014-10-14)
 
