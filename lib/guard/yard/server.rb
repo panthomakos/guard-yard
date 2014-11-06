@@ -2,6 +2,7 @@ require 'socket'
 
 module Guard
   class Yard
+    # Responsible for running, verifying and killing the YARD server.
     class Server
       attr_accessor :pid, :port
 
@@ -13,7 +14,7 @@ module Guard
       end
 
       def spawn
-        UI.info "[Guard::Yard] Starting YARD Documentation Server."
+        UI.info '[Guard::Yard] Starting YARD Documentation Server.'
 
         command = ["yard server -p #{port}"]
         command << @cli if @cli
@@ -24,7 +25,7 @@ module Guard
       end
 
       def kill
-        UI.info "[Guard::Yard] Stopping YARD Documentation Server."
+        UI.info '[Guard::Yard] Stopping YARD Documentation Server.'
         begin
           if pid
             Process.kill('QUIT', pid)
@@ -32,6 +33,7 @@ module Guard
           end
         rescue Errno::ESRCH, Errno::ECHILD
           # Process is already dead.
+          true
         end
         true
       end
@@ -44,12 +46,14 @@ module Guard
           rescue Errno::ECONNREFUSED
             next
           end
-          UI.info "[Guard::Yard] Server successfully started."
+          UI.info '[Guard::Yard] Server successfully started.'
           return true
         end
-        UI.error "[Guard::Yard] Error starting documentation server."
-        Notifier.notify "[Guard::Yard] Server NOT started.",
-          :title => 'yard', :image => :failed
+        UI.error '[Guard::Yard] Error starting documentation server.'
+        Notifier.notify(
+          '[Guard::Yard] Server NOT started.',
+          title: 'yard',
+          image: :failed)
         false
       end
     end
