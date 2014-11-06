@@ -3,6 +3,7 @@ require 'guard/plugin'
 require 'yard'
 
 module Guard
+  # Main guard-yard plugin class.
   class Yard < Plugin
     autoload :NoServer, 'guard/yard/no_server'
     autoload :Server, 'guard/yard/server'
@@ -27,9 +28,9 @@ module Guard
     end
 
     def run_all
-      UI.info "[Guard::Yard] Generating all documentation."
+      UI.info '[Guard::Yard] Generating all documentation.'
       system('rm -rf .yardoc && yard doc')
-      UI.info "[Guard::Yard] Documentation has been generated."
+      UI.info '[Guard::Yard] Documentation has been generated.'
       true
     end
 
@@ -42,16 +43,16 @@ module Guard
     private
 
     def check
-      return true if File.exists?('.yardoc')
-      UI.info "[Guard::Yard] Documentation missing."
-      run_all and true
+      return true if File.exist?('.yardoc')
+      UI.info '[Guard::Yard] Documentation missing.'
+      run_all && true
     end
 
     def boot
-      check and server.kill and server.spawn and server.verify
+      check && server.kill && server.spawn && server.verify
     end
 
-    def document files
+    def document(files)
       ::YARD::Registry.load!
       ::YARD::Registry.load(files, true)
       ::YARD::Registry.load_all
@@ -60,7 +61,7 @@ module Guard
       options = yardoc.options
       objects = ::YARD::Registry.all(:root, :module, :class).reject do |object|
         (!options[:serializer] || options[:serializer].exists?(object)) \
-          && !object.files.any?{|f,line| files.include?(f)}
+          && !object.files.any? { |f, _line| files.include?(f) }
       end
       ::YARD::Templates::Engine.generate(objects, options)
       save_registry
