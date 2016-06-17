@@ -36,6 +36,7 @@ Guard::Yard also provides some basic options for doc generation and running the 
 
 Available options:
 
+    :server => true         # Disable/Enable server
     :port => '8808'         # Port on which the server shoud run.
     :stdout => 'yard.log'   # File in which to log the yard server output.
     :stderr => '/dev/null'  # File in which to log the yard server errors.
