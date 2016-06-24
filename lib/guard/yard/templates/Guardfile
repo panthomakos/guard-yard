@@ -1,5 +1,5 @@
 guard 'yard' do
-  watch(/app\/.+\.rb/)
-  watch(/lib\/.+\.rb/)
-  watch(/ext\/.+\.c/)
+  watch(%r{app\/.+\.rb})
+  watch(%r{lib\/.+\.rb})
+  watch(%r{ext\/.+\.c})
 end

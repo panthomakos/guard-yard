@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'guard', '>= 1.1.0'
   s.add_dependency 'yard', '>= 0.7.0'
   s.add_development_dependency 'rake'
-  s.add_development_dependency 'rubocop'
+  s.add_development_dependency 'rubocop', '= 0.40'
 
   s.files         = Dir.glob('{lib}/**/*') + %w(LICENSE README.markdown)
   s.require_paths = ['lib']

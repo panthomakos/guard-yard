@@ -53,7 +53,8 @@ module Guard
         Notifier.notify(
           '[Guard::Yard] Server NOT started.',
           title: 'yard',
-          image: :failed)
+          image: :failed
+        )
         false
       end
     end
