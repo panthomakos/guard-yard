@@ -38,6 +38,7 @@ Available options:
 
     :server => true         # Disable/Enable server
     :port => '8808'         # Port on which the server shoud run.
+    :host => 'localhost'    # Host to which the server should bind.
     :stdout => 'yard.log'   # File in which to log the yard server output.
     :stderr => '/dev/null'  # File in which to log the yard server errors.
     :cli => '--plugin rest' # Additional command line options to be appended to the server command.

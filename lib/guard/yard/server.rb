@@ -4,10 +4,11 @@ module Guard
   class Yard
     # Responsible for running, verifying and killing the YARD server.
     class Server
-      attr_accessor :pid, :port
+      attr_accessor :pid, :port, :host
 
       def initialize(options = {})
         @port = options[:port] || '8808'
+        @host = options[:host] || 'localhost'
         @stdout = options[:stdout]
         @stderr = options[:stderr]
         @cli = options[:cli]
@@ -16,7 +17,7 @@ module Guard
       def spawn
         UI.info '[Guard::Yard] Starting YARD Documentation Server.'
 
-        command = ["yard server -p #{port}"]
+        command = ["yard server -p #{port} -b #{host}"]
         command << @cli if @cli
         command << "2> #{@stderr}" if @stderr
         command << "1> #{@stdout}" if @stdout
@@ -42,7 +43,7 @@ module Guard
         5.times do
           sleep 1
           begin
-            TCPSocket.new('localhost', port.to_i).close
+            TCPSocket.new(host, port.to_i).close
           rescue Errno::ECONNREFUSED
             next
           end

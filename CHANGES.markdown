@@ -1,3 +1,7 @@
+# master (unreleased)
+
+* Added the server option `host`. (pascalturbo)
+
 # 2.1.4 (2014-11-06)
 
 * Upgraded to use new `Guard::Plugin` standard. (stefanvermaas)
