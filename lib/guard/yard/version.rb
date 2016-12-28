@@ -1,5 +1,5 @@
 module Guard
   module YardVersion
-    VERSION = '2.1.4'.freeze
+    VERSION = '2.2.0'.freeze
   end
 end

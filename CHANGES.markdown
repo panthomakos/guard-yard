@@ -1,5 +1,7 @@
 # master (unreleased)
 
+* 2.2.0 (2016-12-28)
+
 * Added the server option `host`. (pascalturbo)
 
 # 2.1.4 (2014-11-06)
