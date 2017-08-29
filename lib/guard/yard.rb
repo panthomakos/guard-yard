@@ -11,8 +11,8 @@ module Guard
 
     def initialize(options = {})
       super
-      options[:server] = true unless options.key?(:server)
-      @server = options[:server] ? Server.new(options) : NoServer.new
+      options[:enable_server] = true unless options.key?(:enable_server)
+      @server = options[:enable_server] ? Server.new(options) : NoServer.new
     end
 
     def start

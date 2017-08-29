@@ -36,7 +36,8 @@ Guard::Yard also provides some basic options for doc generation and running the 
 
 Available options:
 
-    :server => true         # Disable/Enable server
+    :enable_server => true  # Disable/Enable server. Defalt true
+    :server => "webrick"    # Specify which server to use
     :port => '8808'         # Port on which the server shoud run.
     :host => 'localhost'    # Host to which the server should bind.
     :stdout => 'yard.log'   # File in which to log the yard server output.

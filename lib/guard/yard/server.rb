@@ -9,6 +9,7 @@ module Guard
       def initialize(options = {})
         @port = options[:port] || '8808'
         @host = options[:host] || 'localhost'
+        @server = options[:server]
         @stdout = options[:stdout]
         @stderr = options[:stderr]
         @cli = options[:cli]
@@ -18,6 +19,7 @@ module Guard
         UI.info '[Guard::Yard] Starting YARD Documentation Server.'
 
         command = ["yard server -p #{port} -b #{host}"]
+        command << "-s #{@server}" if @server
         command << @cli if @cli
         command << "2> #{@stderr}" if @stderr
         command << "1> #{@stdout}" if @stdout
