@@ -56,4 +56,4 @@ When booting guard, Guard::Yard will do this for you automatically if no .yardoc
 
 If you are running into issues, try re-creating your documentation using `rm -rf .yardoc && yard doc`. Once this operation is complete, restart guard. If you are still having problems, open a new issue in the GitHub issue tracker for this project.
 
-## Build Status [![Build Status](https://secure.travis-ci.org/panthomakos/guard-yard.png?branch=master)](http://travis-ci.org/panthomakos/guard-yard)
+## Build Status [![Build Status](https://secure.travis-ci.org/panthomakos/guard-yard.svg?branch=master)](http://travis-ci.org/panthomakos/guard-yard)
