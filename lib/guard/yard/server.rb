@@ -27,16 +27,8 @@ module Guard
 
       def kill
         UI.info '[Guard::Yard] Stopping YARD Documentation Server.'
-        begin
-          if pid
-            Process.kill('QUIT', pid)
-            Process.wait2(pid)
-          end
-        rescue Errno::ESRCH, Errno::ECHILD
-          # Process is already dead.
-          true
-        end
-        true
+        return true unless pid
+        Gem.win_platform? ? windows_kill : posix_kill
       end
 
       def verify
@@ -57,6 +49,30 @@ module Guard
           image: :failed
         )
         false
+      end
+
+      private
+
+      def windows_kill
+        # /t includes child process
+        # /f forces (required else we'll fail)
+        if system("taskkill /f /t /pid #{pid}").nil?
+          raise "Cannot kill server: Windows' taskkill command not found"
+        end
+
+        # Process was killed or it didn't exist (something else..?).
+        true
+      end
+
+      def posix_kill
+        begin
+          Process.kill('QUIT', pid)
+          Process.wait2(pid)
+        # rubocop:disable Lint/HandleExceptions
+        rescue Errno::ESRCH, Errno::ECHILD
+          # Process is already dead.
+        end
+        true
       end
     end
   end
