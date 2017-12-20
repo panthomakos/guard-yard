@@ -61,7 +61,7 @@ module Guard
       options = yardoc.options
       objects = ::YARD::Registry.all(:root, :module, :class).reject do |object|
         (!options[:serializer] || options[:serializer].exists?(object)) \
-          && !object.files.any? { |f, _line| files.include?(f) }
+          && object.files.none? { |f, _line| files.include?(f) }
       end
       ::YARD::Templates::Engine.generate(objects, options)
       save_registry
