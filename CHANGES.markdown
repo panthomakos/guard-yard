@@ -1,6 +1,8 @@
 # master (unreleased)
 
-* Add your change here
+# 2.2.1 (2017-12-20)
+
+* Fixes #21. Properly kill YARD server on Windows. (sshaw)
 
 # 2.2.0 (2016-12-28)
 
